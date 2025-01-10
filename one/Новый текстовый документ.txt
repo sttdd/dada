@@ -1,0 +1,33 @@
+create table dolzn(
+id SERIAL PRIMARY KEY, 
+NAME VARCHAR(255)
+)
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,               -- Уникальный идентификатор (auto increment)
+    full_name VARCHAR(100) NOT NULL,      -- ФИО
+    email VARCHAR(100) NOT NULL UNIQUE,   -- Почта (с ограничением на уникальность)
+    phone_number VARCHAR(15) NOT NULL,    -- Номер телефона (формат с международным кодом)
+    dol_id int references dolzn(id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Время создания записи
+);
+INSERT INTO dolzn (NAME)
+values
+('повар'),
+('сварщик'),
+('тренер'),
+('лесник'),
+('тракторист');
+
+INSERT INTO users (full_name, email, phone_number, dol_id)
+VALUES
+    ('Иван Иванов', 'ivan.ivanov@example.com', '+79161234567', 1),
+    ('Мария Петрова', 'maria.petrova@example.com', '+79163456789', 2),
+    ('Алексей Смирнов', 'alexey.smirnov@example.com', '+79164567890', 3),
+    ('Светлана Кузнецова', 'svetlana.kuznetsova@example.com', '+79165678901', 4),
+    ('Дмитрий Волков', 'dmitriy.volkov@example.com', '+79166789012', 5),
+    ('Екатерина Попова', 'ekaterina.popova@example.com', '+79167890123', 1),
+    ('Анатолий Васильев', 'anatoliy.vasiliev@example.com', '+79168901234', 2),
+    ('Наталья Морозова', 'natalya.morozova@example.com', '+79169012345', 3),
+    ('Максим Фёдоров', 'maksim.fyodorov@example.com', '+79170123456', 4),
+    ('Татьяна Сидорова', 'tatiana.sidorova@example.com', '+79171234567', 5);
+    
